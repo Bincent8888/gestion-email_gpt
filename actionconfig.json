@@ -1,0 +1,63 @@
+Épinglé par Corbin Brown
+@webcafeai
+il y a 7 mois
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Zapier Webhook Integration",
+    "description": "OpenAPI specification for POSTing to a Zapier webhook",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://hooks.zapier.com"
+    }
+  ],
+  "paths": {
+    "/hooks/catch/14017241/3zeoqzn/": {
+      "post": {
+        "operationId": "Send Data",
+        "summary": "Post Data to Zapier Webhook",
+        "description": "This endpoint is used to send data to the specified Zapier webhook.",
+        "requestBody": {
+          "description": "Data to be sent to the webhook",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WebhookData": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email address of the user"
+          },
+          "emailSubject": {
+            "type": "string",
+            "description": "Description or subject of the email"
+          }
+        },
+        "required": ["email", "emailSubject"]
+      }
+    }
+  }
+}
